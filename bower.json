@@ -1,0 +1,30 @@
+{
+  "name": "victims.zone",
+  "version": "0.0.1",
+  "authors": [
+    "Roman Kos <win.maklin@gmail.com>"
+  ],
+  "description": "Public project",
+  "keywords": [
+    "collection",
+    "victims",
+    "locations",
+    "markers",
+    "people",
+    "teracts",
+    "bad news",
+    "..."
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "font-awesome": "~4.4.0"
+  }
+}
