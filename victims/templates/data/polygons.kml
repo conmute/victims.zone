@@ -1,0 +1,15 @@
+<Placemark>
+  <name>Bermuda 2</name>
+  <description><![CDATA[{{content}}]]></description>
+  <Polygon>
+    <outerBoundaryIs>
+      <LinearRing>
+        <coordinates>
+          -80.190, 25.774
+          -66.118, 18.466
+          -64.757, 32.321
+        </coordinates>
+      </LinearRing>
+    </outerBoundaryIs>
+  </Polygon>
+</Placemark>

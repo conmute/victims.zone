@@ -1,5 +1,10 @@
 {% extends "_layout.jade" %}
-{% block title %}Welcome{% endblock %}
+{% block title %}Review{% endblock %}
 {% block body %}
-h1 Hello World! {{content}}
+#home-page
+    #map
+script(src="{{ url_for('static', filename='js/mapstyle.js') }}")
+script(src="{{ url_for('static', filename='js/page/home.js') }}")
+script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6IgXuWhGYLI65wZT3PPUR4sk2MojnGc4&callback=initMap",
+    async, defer)
 {% endblock %}

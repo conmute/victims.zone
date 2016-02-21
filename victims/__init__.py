@@ -1,5 +1,6 @@
 from flask import Flask
 from victims.main.controllers import main
+from victims.data.controllers import data
 from victims.utils import get_config_folder_path
 
 app = Flask(__name__,
@@ -10,3 +11,4 @@ app = Flask(__name__,
 app.jinja_env.add_extension('pyjade.ext.jinja.PyJadeExtension')
 
 app.register_blueprint(main, url_prefix='/')
+app.register_blueprint(data, url_prefix='/data')
