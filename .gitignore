@@ -2,3 +2,4 @@ venv/
 bower_components/
 config/flask.cfg
 __pycache__
+__init__.pyc

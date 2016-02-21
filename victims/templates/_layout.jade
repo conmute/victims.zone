@@ -1,0 +1,12 @@
+doctype 5
+html
+    head
+        title {% block title %}{% endblock %} - Victims.zone
+        link(href="{{ url_for('static', filename='css/app.css') }}",
+             media="screen",
+             rel="stylesheet")
+    body
+        #root
+            {% include '_navbar.jade' %}
+            .container
+                {% block body %}{% endblock %}
