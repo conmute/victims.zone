@@ -16,3 +16,4 @@ html
             {% block body %}{% endblock %}
         script(src="https://code.jquery.com/jquery-1.10.2.min.js")
         script(src="{{ url_for('static', filename='js/bootstrap.min.js') }}")
+        {% block scripts %}{% endblock %}

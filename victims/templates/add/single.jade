@@ -1,5 +1,66 @@
 {% extends "_layout.jade" %}
 {% block title %}Add single record{% endblock %}
 {% block body %}
-h1 Single record
+#add-single.container
+    .row
+        .col-sm-8.col-sm-push-2
+            h2
+                | Single record &nbsp;
+                small Add location of incident
+
+            form.form-horizontal
+
+                label.col-xs-12.form-group(for="inputName")
+                    input#inputName.form-control(type='text', placeholder='Name', aria-describedby="helpName")
+                    span#helpName.help-block Describe the incident in simple name
+
+                label.col-xs-12.form-group(for="inputLocation")
+                    input#inputLocation.input-sm.form-control(type='text', placeholder='Location', aria-describedby="helpLocation")
+                    #map-location
+                    span#helpLocation.help-block Set the location on the map
+
+                label.col-xs-12.form-group(for="inputDate")
+                    input#inputDate.form-control(type='text', placeholder='Date', aria-describedby="helpDate")
+                    span#helpDate.help-block Give the date of the incident
+
+                label.col-xs-12.form-group(for="inputDescription")
+                    textarea#inputDescription.form-control(placeholder='Description', aria-describedby="helpDescription")
+                    span#helpDescription.help-block Descriptive text about what happened
+
+                label.col-xs-12.form-group(for="inputTags")
+                    select#inputTags.form-control(type='text', placeholder='Tags', aria-describedby="helpTags", multiple="multiple")
+                        option(value="injured") Injured
+                        option(value="death") Deth
+                        option(value="threatened") Threatened
+                        option(value="disease") Disease
+                    span#helpTags.help-block Give tags for the incident
+
+                label.col-xs-12.form-group(for="inputCategory")
+                    select#inputCategory.form-control(type='text', placeholder='Category', aria-describedby="helpCategory")
+                        option(value="terrorism") Terrorism
+                        option(value="quarantine") Quarantine
+                        option(value="war") War
+                        option(value="martial_law") Martial law
+                    span#helpCategory.help-block Select category
+
+                .col-xs-12.form-group.btn-group(role="group")
+                    button.btn.btn-default(type='reset') Cancel
+                    button.btn.btn-primary(type='submit') Submit
+{% endblock %}
+{% block scripts %}
+
+script(type="text/javascript", src="{{ url_for('static', filename='js/mapstyle.js') }}")
+script(type="text/javascript", src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js")
+
+script(type="text/javascript", src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js")
+link(rel="stylesheet", type="text/css", href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css")
+
+link(href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2-rc.1/css/select2.min.css", rel="stylesheet")
+script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2-rc.1/js/select2.min.js")
+
+script(type="text/javascript", src="{{ url_for('static', filename='js/page/add_single.js') }}")
+
+script(type="text/javascript", src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6IgXuWhGYLI65wZT3PPUR4sk2MojnGc4&callback=initMap",
+    async, defer)
+
 {% endblock %}
