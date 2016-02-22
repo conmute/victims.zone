@@ -115,13 +115,13 @@ def add_record():
         author = user # No authors implemented yet
     )
 
-    return "record: {}".format(record)
+    db.session.add(record)
+    db.session.flush()
+    record_id = record.id
+    db.session.commit()
 
     try:
-        db.session.add(record)
-        db.session.flush()
-        record_id = record.id
-        db.session.commit()
+        pass
     except:
         if is_ajax:
             return ajax_response(False, "Couldn't add a record: {}".format(form))
