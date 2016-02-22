@@ -1,4 +1,5 @@
 venv/
+migrations/
 bower_components/
 config/flask.cfg
 __pycache__

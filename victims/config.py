@@ -7,13 +7,15 @@ class BaseConfig(object):
     LOGGING_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     LOGGING_LOCATION = 'logs/victims.log'
     LOGGING_LEVEL = logging.DEBUG
+    CSRF_ENABLED = True
     MODE = 'base'
-    
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
+
 class DevelopmentConfig(BaseConfig):
     DEBUG = True
     TESTING = False
     MODE = 'development'
-    
+
 class TestingConfig(BaseConfig):
     DEBUG = False
     TESTING = True
@@ -23,7 +25,7 @@ class ProductionConfig(BaseConfig):
     DEBUG = False
     TESTING = False
     MODE = 'production'
-    
+
 
 config = {
     "development": "victims.config.DevelopmentConfig",
@@ -37,7 +39,7 @@ def configure_flask(app):
     config_name = os.getenv('FLASK_CONFIGURATION', 'default')
     app.config.from_object(config[config_name])
     app.config.from_pyfile('flask.cfg', silent=True)
-    
+
 def configure_logging(app):
     handler = logging.FileHandler(app.config['LOGGING_LOCATION'])
     handler.setLevel(app.config['LOGGING_LEVEL'])

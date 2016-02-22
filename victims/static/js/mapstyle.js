@@ -1,3 +1,4 @@
+// http://www.mapstylr.com/style/midnight-commander/
 window.mapstyle = [
     {
         "featureType": "water",

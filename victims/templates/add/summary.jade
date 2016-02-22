@@ -14,8 +14,9 @@
                     input#inputName.form-control(type='text', placeholder='Name', aria-describedby="helpName")
                     span#helpName.help-block Describe the incident in simple name
 
-                label.col-xs-12.form-group(for="inputPolygon")
-                    input#inputPolygon.input-sm.form-control(type='text', placeholder='Polygon', aria-describedby="helpPolygon")
+                label.col-xs-12.form-group.has-feedback(for="inputPolygon")
+                    textarea#inputPolygon.input-sm.form-control(placeholder='Polygon', aria-describedby="helpPolygon", rows="1")
+                    a#polygonClear.fa.fa-close.form-control-feedback(href="#")
                     #map-polygon
                     span#helpPolygon.help-block Use shape generator to draw a polygon.
 

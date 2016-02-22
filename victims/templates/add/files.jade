@@ -1,0 +1,10 @@
+{% extends "_layout.jade" %}
+{% block title %}File upload example{% endblock %}
+{% block body %}
+
+{% for file in files %}
+<h2>{{ file }}</h2>
+<img src="{{ url_for('static', filename='uploads/{}/{}'.format(uuid, file)) }}">
+{% endfor %}
+
+{% endblock %}

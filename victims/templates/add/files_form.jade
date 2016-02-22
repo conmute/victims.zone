@@ -1,0 +1,48 @@
+{% extends "_layout.jade" %}
+{% block title %}File upload example{% endblock %}
+{% block body %}
+form#upload-form(action="{{ url_for('data.files_upload_request') }}", method='POST', enctype='multipart/form-data')
+  strong Normal Text Box:
+  br
+  input(type='text', size='20', name='input1', value='uploads')
+  p
+    strong Select Box:
+    br
+    select(name='selectbox')
+      option(value='abc') ABC
+      option(value='xyz') XYZ
+  p
+    strong Checkbox:
+    br
+    input(type='checkbox', name='checkbox', value='on', checked='')
+    |  On
+  p
+    strong Radio:
+    br
+    input(type='radio', name='radio', value='yes', checked='')
+    |  Yes
+    input(type='radio', name='radio', value='no')
+    |  No
+  p
+    strong Text Area:
+    br
+    textarea(rows='4', cols='40', name='textarea') Text area contents.
+  p
+    strong Files:
+    br
+    |     Select files OR drag them into the box below.
+    input#file-picker(type='file', name='file', accept='image/*', multiple='')
+  p
+    #dropbox
+      | Drag and Drop Files Here
+  p
+    fieldset#progress(style='display: none')
+      legend Files Progress
+      .progress-trough
+        #progress-bar.progress-bar 0%
+  p
+    input#upload-button(type='submit', value='Upload!')
+{% endblock %}
+{% block scripts %}
+script(type='text/javascript', src="{{ url_for('static', filename='js/uploadr.js') }}")
+{% endblock %}

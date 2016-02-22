@@ -28,3 +28,9 @@ npm install -g bower
 cd assets/
 while true;do N=`find -name "*.less" `;inotifywait -qe modify $N ;for f in $N; do lessc -x less/app.less --source-map ../victims/static/css/app.css;done;done
 ```
+
+
+## Some resources for later
+
+https://realpython.com/blog/python/flask-by-example-part-2-postgres-sqlalchemy-and-alembic/
+http://flask-sqlalchemy.pocoo.org/2.1/models/
