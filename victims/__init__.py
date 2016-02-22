@@ -11,13 +11,12 @@ app = Flask(__name__,
             instance_relative_config=True,
             template_folder='templates')
 
+configure_app(app)
+mngr = Manager(app)
+db = SQLAlchemy(app)
+app.db = db
+
 app.jinja_env.add_extension('pyjade.ext.jinja.PyJadeExtension')
 
 app.register_blueprint(main, url_prefix='/')
 app.register_blueprint(data, url_prefix='/data')
-
-configure_app(app)
-mngr = Manager(app)
-db = SQLAlchemy(app)
-
-from victims.data.models import *

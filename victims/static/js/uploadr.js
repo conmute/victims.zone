@@ -4,8 +4,8 @@
 
 // Constants
 var MAX_UPLOAD_FILE_SIZE = 1024*1024; // 1 MB
-var UPLOAD_URL = "/data/files/upload";
-var NEXT_URL   = "/data/files/";
+var UPLOAD_URL = "/data/add/record";
+var NEXT_URL   = "/data/record/";
 
 // List of pending files to handle when the Upload button is finally clicked.
 var PENDING_FILES  = [];

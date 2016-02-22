@@ -8,36 +8,52 @@
                 | Summary record &nbsp;
                 small Add location area of incident
 
-            form.form-horizontal
+            form.form-horizontal#upload-form(action="{{ url_for('data.add_record') }}",
+                                             method='POST', enctype='multipart/form-data')
+
+                input(type="hidden", name="type", value="summary")
 
                 label.col-xs-12.form-group(for="inputName")
-                    input#inputName.form-control(type='text', placeholder='Name', aria-describedby="helpName")
+                    input#inputName.form-control(type='text', placeholder='Name', name="name", aria-describedby="helpName")
                     span#helpName.help-block Describe the incident in simple name
 
                 label.col-xs-12.form-group.has-feedback(for="inputPolygon")
-                    textarea#inputPolygon.input-sm.form-control(placeholder='Polygon', aria-describedby="helpPolygon", rows="1")
+                    textarea#inputPolygon.input-sm.form-control(placeholder='Polygon', name="polygon", aria-describedby="helpPolygon", rows="1")
                     a#polygonClear.fa.fa-close.form-control-feedback(href="#")
                     #map-polygon
                     span#helpPolygon.help-block Use shape generator to draw a polygon.
 
                 label.col-xs-12.form-group(for="inputDateRange")
-                    input#inputDateRange.form-control(type='text', placeholder='Date range', aria-describedby="helpDateRange")
+                    input#inputDateRange.form-control(type='text', placeholder='Date range', name="date_range", aria-describedby="helpDateRange")
                     span#helpDateRange.help-block Give the date range of the incidents
 
                 label.col-xs-12.form-group(for="inputDescription")
-                    textarea#inputDescription.form-control(placeholder='Description', aria-describedby="helpDescription")
+                    textarea#inputDescription.form-control(placeholder='Description', name="description", aria-describedby="helpDescription")
                     span#helpDescription.help-block Descriptive text about what happened
 
+
+                label.col-xs-12.form-group(for="file-picker")
+                    input#file-picker.form-control(type='file', name='file', accept='image/*', multiple='',
+                                                   aria-describedby="helpFilePicker")
+                    span#helpFilePicker Select files OR drag them into the box below.
+
+                    #dropbox Drag and Drop Files Here
+
+                    fieldset#progress(style='display: none')
+                        legend Files Progress
+                        .progress-trough
+                            #progress-bar.progress-bar 0%
+
                 label.col-xs-12.form-group(for="inputTags")
-                    select#inputTags.form-control(type='text', placeholder='Tags', aria-describedby="helpTags", multiple="multiple")
+                    select#inputTags.form-control(type='text', placeholder='Tags', name="tags", aria-describedby="helpTags", multiple="multiple")
                         option(value="injured") Injured
-                        option(value="death") Deth
+                        option(value="death") Death
                         option(value="threatened") Threatened
                         option(value="disease") Disease
                     span#helpTags.help-block Give tags for the incident
 
                 label.col-xs-12.form-group(for="inputCategory")
-                    select#inputCategory.form-control(type='text', placeholder='Category', aria-describedby="helpCategory")
+                    select#inputCategory.form-control(type='text', placeholder='Category', name="category", aria-describedby="helpCategory")
                         option(value="terrorism") Terrorism
                         option(value="quarantine") Quarantine
                         option(value="war") War
@@ -60,6 +76,7 @@ link(href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2-rc.1/css/select2
 script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2-rc.1/js/select2.min.js")
 
 script(type="text/javascript", src="{{ url_for('static', filename='js/page/add_summary.js') }}")
+script(type='text/javascript', src="{{ url_for('static', filename='js/uploadr.js') }}")
 
 script(type="text/javascript", src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6IgXuWhGYLI65wZT3PPUR4sk2MojnGc4&callback=initMap",
     async, defer)

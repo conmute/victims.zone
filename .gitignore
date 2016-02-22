@@ -2,5 +2,6 @@ venv/
 migrations/
 bower_components/
 config/flask.cfg
+venvictims/statis/uploads/*
 __pycache__
 __init__.pyc

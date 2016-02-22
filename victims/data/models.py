@@ -1,6 +1,8 @@
-from victims import db
+from flask import current_app
 from sqlalchemy.dialects.postgresql import JSON
 import datetime
+
+db = current_app.db
 
 
 class User(db.Model):
@@ -45,4 +47,18 @@ class Record(db.Model):
     tags = db.relationship('Tag', secondary=tags,
         backref=db.backref('record', lazy='dynamic'))
     category = db.Column(db.Integer, db.ForeignKey('category.id'))
-    author_id = db.Column(db.BigInteger, db.ForeignKey('user.id'))
+    author = db.Column(db.BigInteger, db.ForeignKey('user.id'))
+
+    def __init__(self, name, description, date_from, date_to, map_data, category, tags, type, author):
+        self.name = name
+        self.description = description
+        self.date_from = date_from
+        self.date_to = date_to
+        self.map_data = map_data
+        self.category = category
+        self.tags = tags
+        self.type = type
+        self.author = author
+
+    def __repr__(self):
+        return '<id {}>'.format(self.id)

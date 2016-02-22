@@ -8,35 +8,50 @@
                 | Single record &nbsp;
                 small Add location of incident
 
-            form.form-horizontal
+            form.form-horizontal#upload-form(action="{{ url_for('data.add_record') }}",
+                                             method='POST', enctype='multipart/form-data')
+
+                input(type="hidden", name="type", value="single")
 
                 label.col-xs-12.form-group(for="inputName")
-                    input#inputName.form-control(type='text', placeholder='Name', aria-describedby="helpName")
+                    input#inputName.form-control(type='text', placeholder='Name', name="name", aria-describedby="helpName")
                     span#helpName.help-block Describe the incident in simple name
 
                 label.col-xs-12.form-group(for="inputLocation")
-                    input#inputLocation.input-sm.form-control(type='text', placeholder='Location', aria-describedby="helpLocation")
+                    input#inputLocation.input-sm.form-control(type='text', placeholder='Location', name="location",  aria-describedby="helpLocation")
                     #map-location
                     span#helpLocation.help-block Set the location on the map
 
                 label.col-xs-12.form-group(for="inputDate")
-                    input#inputDate.form-control(type='text', placeholder='Date', aria-describedby="helpDate")
+                    input#inputDate.form-control(type='text', placeholder='Date', name="date", aria-describedby="helpDate")
                     span#helpDate.help-block Give the date of the incident
 
                 label.col-xs-12.form-group(for="inputDescription")
-                    textarea#inputDescription.form-control(placeholder='Description', aria-describedby="helpDescription")
+                    textarea#inputDescription.form-control(placeholder='Description', name="description", aria-describedby="helpDescription")
                     span#helpDescription.help-block Descriptive text about what happened
 
+                label.col-xs-12.form-group(for="file-picker")
+                    input#file-picker.form-control(type='file', name='file', accept='image/*', multiple='',
+                                                   aria-describedby="helpFilePicker")
+                    span#helpFilePicker Select files OR drag them into the box below.
+
+                    #dropbox Drag and Drop Files Here
+
+                    fieldset#progress(style='display: none')
+                        legend Files Progress
+                        .progress-trough
+                            #progress-bar.progress-bar 0%
+
                 label.col-xs-12.form-group(for="inputTags")
-                    select#inputTags.form-control(type='text', placeholder='Tags', aria-describedby="helpTags", multiple="multiple")
+                    select#inputTags.form-control(type='text', placeholder='Tags', name="tags", aria-describedby="helpTags", multiple="multiple")
                         option(value="injured") Injured
-                        option(value="death") Deth
+                        option(value="death") Death
                         option(value="threatened") Threatened
                         option(value="disease") Disease
                     span#helpTags.help-block Give tags for the incident
 
                 label.col-xs-12.form-group(for="inputCategory")
-                    select#inputCategory.form-control(type='text', placeholder='Category', aria-describedby="helpCategory")
+                    select#inputCategory.form-control(type='text', placeholder='Category', name="category", aria-describedby="helpCategory")
                         option(value="terrorism") Terrorism
                         option(value="quarantine") Quarantine
                         option(value="war") War
@@ -45,7 +60,7 @@
 
                 .col-xs-12.form-group.btn-group(role="group")
                     button.btn.btn-default(type='reset') Cancel
-                    button.btn.btn-primary(type='submit') Submit
+                    button#upload-button.btn.btn-primary(type='submit') Submit
 {% endblock %}
 {% block scripts %}
 
@@ -59,6 +74,7 @@ link(href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2-rc.1/css/select2
 script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2-rc.1/js/select2.min.js")
 
 script(type="text/javascript", src="{{ url_for('static', filename='js/page/add_single.js') }}")
+script(type='text/javascript', src="{{ url_for('static', filename='js/uploadr.js') }}")
 
 script(type="text/javascript", src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6IgXuWhGYLI65wZT3PPUR4sk2MojnGc4&callback=initMap",
     async, defer)
