@@ -14,14 +14,23 @@ frontend: javascript(jquery)+css(less)+html(jade)
 ## User behaviour and results, or in other words "The Flow of application"
 
 > Watch (as anonymous user)
+>
 > > The map with area or markers of victims locations
+>
 > > Date filter slider above the map
+>
 > > On clicking of location/area show information about it
+>
 > Add (as registered user)
+>
 > > Add victim(-s) information group information, and single instance information
+>
 > > Add memories about victim(-s)
+>
 > Update (as registered user)
+>
 > > Fix the information give by other user about victim(-s)
+>
 > > Answer to a memory given by someone else
 
 ## Development steps
